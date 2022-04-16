@@ -5,14 +5,12 @@ import {
   UpdateDateColumn,
   PrimaryColumn,
 } from 'typeorm';
+import { v4 as uuid  } from 'uuid';
+import { CreateEmployeePropsDTO } from '../useCases/Employee/EmployeeDTO';
 
-import { v4 as uuid } from 'uuid';
-
-import { CreateShopPropsDTO } from '../useCases/Shop/CreateShopDTO';
-
-@Entity('shops')
-export class Shop {
-  constructor(props: CreateShopPropsDTO) {
+@Entity('employees')
+export class Employee {
+  constructor(props: CreateEmployeePropsDTO) {
     Object.assign(this, props);
 
     if (!this.id) {
@@ -26,14 +24,14 @@ export class Shop {
   @Column()
   name: string;
 
-  @Column('character varying', { length: 20 })
-  phone: string;
+  @Column()
+  role: string;
 
   @Column()
-  city: string;
+  balance: string;
 
   @Column()
-  profile_photo: string;
+  profile_photo?: string;
 
   @CreateDateColumn()
   created_at: Date;

@@ -15,11 +15,11 @@ module.exports = {
   synchronize: process.env.TYPEORM_SYNCHRONIZE,
   logging: false,
   entities: [`src/app/entities/*.ts`, `build/app/entities/*.js`],
-  migrations: [`${rootDir}/database/migrations/*.${extensionFile}`],
+  migrations: [`${rootDir}/infra/database/migrations/*.${extensionFile}`],
   subscribers: ['src/subscriber/**/*.ts'],
   cli: {
     entitiesDir: `${rootDir}/app/entities`,
-    migrationsDir: `${rootDir}/database/migrations`,
+    migrationsDir: `${rootDir}/infra/database/migrations`,
     subscribersDir: 'src/subscriber',
   },
 };
