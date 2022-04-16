@@ -1,10 +1,10 @@
 import { EntityRepository, Repository } from 'typeorm';
-import Candidate from '../models/Candidate';
+import { Shop } from '../entities/Shop';
 
-@EntityRepository(Candidate)
-class CandidateRepository extends Repository<Candidate> {
+@EntityRepository(Shop)
+export class ShopRepository extends Repository<Shop> {
 
-  public async findByEmail(email: string): Promise<Candidate | null> {
+  public async findByEmail(email: string): Promise<Shop | null> {
     const findEmail = await this.findOne({
 
       where: { email },
@@ -13,7 +13,7 @@ class CandidateRepository extends Repository<Candidate> {
     return findEmail || null;
   }
 
-  public async findById(id_candidate: string): Promise<Candidate | null> {
+  public async findById(id_candidate: string): Promise<Shop | null> {
     const findId = await this.findOne({
       where: { id_candidate },
     });
@@ -22,4 +22,3 @@ class CandidateRepository extends Repository<Candidate> {
   }
 }
 
-export default CandidateRepository;

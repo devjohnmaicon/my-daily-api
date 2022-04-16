@@ -1,13 +1,12 @@
 import { Router } from 'express';
 import { getCustomRepository } from 'typeorm';
-
-import CandidateRepository from '../app/repositories/CandidateRepository';
-import CreateCandidateService from '../app/services/candidate/CreateCandidateService';
+import { ShopRepository } from '../app/repositories/CandidateRepository';
+import { CreateShopService } from '../app/services/candidate/CreateShopService';
 
 const candidateRouter = Router();
 
 candidateRouter.get('/', async (request, response) => {
-  const candidateRepository = getCustomRepository(CandidateRepository);
+  const candidateRepository = getCustomRepository(ShopRepository);
   const candidate = await candidateRepository.find();
 
   return response.json(candidate);
@@ -15,15 +14,13 @@ candidateRouter.get('/', async (request, response) => {
 
 candidateRouter.post('/', async (request, response) => {
   try {
-    const { name, email, phone, cpf, city, profile_photo } = request.body;
+    const { name, phone, city, profile_photo } = request.body;
 
-    const CreateCandidate = new CreateCandidateService();
+    const createShop = new CreateShopService();
 
-    const candidate = await CreateCandidate.execute({
+    const candidate = await createShop.execute({
       name,
-      email,
       phone,
-      cpf,
       city,
       profile_photo,
     });

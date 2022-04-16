@@ -1,0 +1,24 @@
+{
+   "type": "postgres",
+   "host": "localhost",
+   "port": 5432,
+   "username": "postgres",
+   "password": "postgres",
+   "database": "db-my-daily",
+   "synchronize": true,
+   "logging": false,
+   "entities": [
+      "src/app/entities/**/*.ts"
+   ],
+   "migrations": [
+      "src/database/migrations/**/*.ts"
+   ],
+   "subscribers": [
+      "src/subscriber/**/*.ts"
+   ],
+   "cli": {
+      "entitiesDir": "src/app/entities",
+      "migrationsDir": "src/database/migrations",
+      "subscribersDir": "src/subscriber"
+   }
+}
