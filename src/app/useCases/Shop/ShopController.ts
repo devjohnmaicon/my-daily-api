@@ -1,10 +1,10 @@
 import { Request, Response } from 'express';
 import { CreateShopUseCase } from './CreateShopUseCase';
 
-export class CreateShopController {
+export class ShopController {
   constructor(private createShopUseCase: CreateShopUseCase) {}
 
-  async handle(request: Request, response: Response): Promise<Response> {
+  async create(request: Request, response: Response): Promise<Response> {
     const { name, phone, city, profile_photo } = request.body;
 
     try {

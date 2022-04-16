@@ -1,10 +1,10 @@
 import { ShopRepository } from '../../repositories/implementations/ShopRepository';
-import { CreateShopController } from './CreateShopController';
 import { CreateShopUseCase } from './CreateShopUseCase';
+import { ShopController } from './ShopController';
 
 const shopRepository = new ShopRepository();
 const createShopUseCase = new CreateShopUseCase(shopRepository);
 
-const createShopController = new CreateShopController(createShopUseCase);
+const shopController = new ShopController(createShopUseCase);
 
-export { createShopUseCase, createShopController };
+export { createShopUseCase, shopController };

@@ -10,12 +10,14 @@ export class CreateEmployeeUseCase {
     role,
     balance,
     profile_photo,
+    shop,
   }: CreateEmployeePropsDTO): Promise<Employee | Error> {
     const employee = new Employee({
       name,
       role,
       balance,
       profile_photo,
+      shop,
     });
 
     const newEmployee = await this.employeeRepository.save(employee);

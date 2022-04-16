@@ -5,7 +5,7 @@ export class EmployeeController {
   constructor(private createEmployeeUseCase: CreateEmployeeUseCase) {}
 
   async create(request: Request, response: Response): Promise<Response> {
-    const { name, role, balance, profile_photo } = request.body;
+    const { name, role, balance, profile_photo, shop } = request.body;
 
     try {
       const employee = await this.createEmployeeUseCase.execute({
@@ -13,6 +13,7 @@ export class EmployeeController {
         role,
         balance,
         profile_photo,
+        shop,
       });
 
       return response.json(employee);

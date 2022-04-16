@@ -1,12 +1,13 @@
 import { Router } from 'express';
 import { dailyController } from '../app/useCases/Daily';
 import { employeeController } from '../app/useCases/Employee';
-import { createShopController } from '../app/useCases/Shop';
+import { shopController } from '../app/useCases/Shop';
+import { ShopController } from '../app/useCases/Shop/ShopController';
 
 const routes = Router();
 
 routes.post('/newShop', (req, res) => {
-  return createShopController.handle(req, res);
+  return shopController.create(req, res);
 });
 
 routes.post('/newEmployee', (req, res) => {

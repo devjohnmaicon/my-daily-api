@@ -1,7 +1,6 @@
-import { getCustomRepository } from 'typeorm';
 import { Shop } from '../../entities/Shop';
 import { IShopRepository } from '../../repositories/IShopRepository';
-import { CreateShopPropsDTO } from './CreateShopDTO';
+import { CreateShopPropsDTO } from './ShopDTO';
 
 export class CreateShopUseCase {
   constructor(private shopRepository: IShopRepository) {}
