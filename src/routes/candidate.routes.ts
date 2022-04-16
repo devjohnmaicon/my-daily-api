@@ -7,7 +7,6 @@ import CreateCandidateService from '../app/services/candidate/CreateCandidateSer
 const candidateRouter = Router();
 
 candidateRouter.get('/', async (request, response) => {
-
   const candidateRepository = getCustomRepository(CandidateRepository);
   const candidate = await candidateRepository.find();
 
@@ -16,14 +15,7 @@ candidateRouter.get('/', async (request, response) => {
 
 candidateRouter.post('/', async (request, response) => {
   try {
-    const {
-      name,
-      email,
-      phone,
-      cpf,
-      city,
-      profile_photo,
-    } = request.body;
+    const { name, email, phone, cpf, city, profile_photo } = request.body;
 
     const CreateCandidate = new CreateCandidateService();
 
@@ -33,12 +25,12 @@ candidateRouter.post('/', async (request, response) => {
       phone,
       cpf,
       city,
-      profile_photo
+      profile_photo,
     });
 
     return response.json(candidate);
   } catch (err) {
-    return response.status(400).json({ error: err.message });
+    return response.status(400).send('error');
   }
 });
 
