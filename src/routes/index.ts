@@ -1,8 +1,10 @@
 import { Router } from 'express';
-import candidateTypeRouter from './candidate.routes';
+import { createShopController } from '../app/useCases/createShop';
 
 const routes = Router();
- 
-routes.use('/', candidateTypeRouter);
+
+routes.post('/', (req, res) => {
+  return createShopController.handle(req, res);
+});
 
 export default routes;

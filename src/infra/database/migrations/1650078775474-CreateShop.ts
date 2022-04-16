@@ -9,7 +9,8 @@ export class CreateShop1650078775474 implements MigrationInterface {
               columns: [
                 {
                   name: 'id',
-                  type: 'varchar',
+                  type: 'uuid',
+                  
                   isPrimary: true,
                 },
                 {
@@ -36,7 +37,7 @@ export class CreateShop1650078775474 implements MigrationInterface {
                   name: 'profile_photo',
                   type: 'varchar',
                   length: '100',
-                  isNullable: false,
+                  isNullable: true,
                 },
                 {
                   name: 'created_at',

@@ -1,16 +1,25 @@
 import {
   Entity,
   Column,
-  PrimaryGeneratedColumn,
   CreateDateColumn,
   UpdateDateColumn,
-  OneToMany,
+  PrimaryColumn,
 } from 'typeorm';
+import { v4 as uuid  } from 'uuid';
+import { CreateShopPropsDTO } from '../useCases/createShop/CreateShopDTO';
 
 @Entity('shops')
 export class Shop {
-  @PrimaryGeneratedColumn('increment')
-  id: number;
+  constructor(props: CreateShopPropsDTO) {
+    Object.assign(this, props);
+
+    if (!this.id) {
+      this.id = uuid();
+    }
+  }
+
+  @PrimaryColumn()
+  id: string;
 
   @Column()
   name: string;
