@@ -14,7 +14,7 @@ export class EmployeeRepository implements IEmployeeRepository {
   getEmployees(): Promise<Employee[]> {
     const repo = getRepository(Employee);
 
-    const employees = repo.find({ relations: ['dailies', 'role'] });
+    const employees = repo.find({ relations: ['role', 'dailies'] });
 
     return employees;
   }

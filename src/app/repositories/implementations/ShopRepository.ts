@@ -14,7 +14,7 @@ export class ShopRepository implements IShopRepository {
   async get(): Promise<Shop[]> {
     const repo = getRepository(Shop);
 
-    const shop = await repo.find({relations: ['employees']});
+    const shop = await repo.find({ relations: ['role', 'employees'] });
 
     return shop;
   }

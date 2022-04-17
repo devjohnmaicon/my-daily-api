@@ -1,8 +1,8 @@
 import { Router } from 'express';
-import { dailyController } from '../app/useCases/Daily';
-import { employeeController } from '../app/useCases/Employee';
-import { roleController } from '../app/useCases/Role';
-import { shopController } from '../app/useCases/Shop';
+import { dailyController } from '../../app/useCases/Daily';
+import { employeeController } from '../../app/useCases/Employee';
+import { roleController } from '../../app/useCases/Role';
+import { shopController } from '../../app/useCases/Shop';
 
 const routes = Router();
 
