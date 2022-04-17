@@ -5,20 +5,22 @@ export class DailyController {
   constructor(private createDailyUseCase: CreateDailyUseCase) {}
 
   async create(request: Request, response: Response): Promise<Response> {
-    const { type, value, date, description } = request.body;
+    const { type, value, date, description, employee } = request.body;
 
     try {
-      const employee = await this.createDailyUseCase.execute({
+      const _employee = await this.createDailyUseCase.execute({
         type,
         value,
         date,
         description,
+        employee,
       });
 
-      return response.json(employee);
+      return response.json(_employee);
     } catch (err) {
       return response.status(400).send({ error: err.message });
     }
   }
 }
 
+       

@@ -11,7 +11,7 @@ export class CreateShopUseCase {
     city,
     profile_photo,
   }: CreateShopPropsDTO): Promise<Shop | Error> {
-    const hasShops = await this.shopRepository.findByName(name);
+    const hasShops = await this.shopRepository.getByName(name);
 
     if (hasShops) {
       throw new Error('Loja já Existe');

@@ -10,12 +10,14 @@ export class CreateDailyUseCase {
     value,
     date,
     description,
+    employee,
   }: CreateDailyPropsDTO): Promise<Daily | Error> {
     const daily = new Daily({
       type,
       value,
       date,
       description,
+      employee,
     });
 
     const newDaily = await this.dailyRepository.save(daily);

@@ -6,19 +6,27 @@ import { shopController } from '../app/useCases/Shop';
 
 const routes = Router();
 
-routes.post('/newShop', (req, res) => {
+routes.post('/shopCreate', (req, res) => {
   return shopController.create(req, res);
 });
 
-routes.post('/newEmployee', (req, res) => {
+routes.get('/shop', (req, res) => {
+  return shopController.getShop(req, res);
+});
+
+routes.post('/employeeCreate', (req, res) => {
   return employeeController.create(req, res);
 });
 
-routes.post('/newDaily', (req, res) => {
+routes.get('/employee', (req, res) => {
+  return employeeController.index(req, res);
+});
+
+routes.post('/dailyCreate', (req, res) => {
   return dailyController.create(req, res);
 });
 
-routes.post('/newRole', (req, res) => {
+routes.post('/roleCreate', (req, res) => {
   return roleController.create(req, res);
 });
 

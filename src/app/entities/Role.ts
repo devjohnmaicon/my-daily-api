@@ -31,9 +31,5 @@ export class Role {
   @OneToMany(() => Shop, (shop) => shop.role)
   shops: Shop[];
 
-  @CreateDateColumn()
-  created_at: Date;
-
-  @UpdateDateColumn()
-  updated_at: Date;
+ 
 }
