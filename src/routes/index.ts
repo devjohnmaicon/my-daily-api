@@ -1,8 +1,8 @@
 import { Router } from 'express';
 import { dailyController } from '../app/useCases/Daily';
 import { employeeController } from '../app/useCases/Employee';
+import { roleController } from '../app/useCases/Role';
 import { shopController } from '../app/useCases/Shop';
-import { ShopController } from '../app/useCases/Shop/ShopController';
 
 const routes = Router();
 
@@ -16,6 +16,10 @@ routes.post('/newEmployee', (req, res) => {
 
 routes.post('/newDaily', (req, res) => {
   return dailyController.create(req, res);
+});
+
+routes.post('/newRole', (req, res) => {
+  return roleController.create(req, res);
 });
 
 export default routes;

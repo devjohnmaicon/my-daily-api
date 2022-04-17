@@ -4,9 +4,12 @@ import {
   CreateDateColumn,
   UpdateDateColumn,
   PrimaryColumn,
+  OneToMany,
+  ManyToOne,
 } from 'typeorm';
 import { v4 as uuid } from 'uuid';
 import { CreateDailyPropsDTO } from '../useCases/Daily/DailyDTO';
+import { Employee } from './Employee';
 
 @Entity('dailies')
 export class Daily {
@@ -32,6 +35,9 @@ export class Daily {
 
   @Column()
   description?: string;
+
+  @ManyToOne(() => Employee, (employee) => employee.dailies)
+  employee: Employee;
 
   @CreateDateColumn()
   created_at: Date;
