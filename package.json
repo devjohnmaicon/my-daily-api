@@ -11,22 +11,24 @@
     "migration:run": "npm run typeorm migration:run -- -t=each"
   },
   "dependencies": {
+    "@types/bcrypt": "^5.0.0",
+    "bcrypt": "^5.0.1",
     "cors": "^2.8.5",
     "dotenv": "^10.0.0",
     "express": "^4.17.1",
+    "mysql": "^2.14.1",
     "pg": "^8.3.3",
     "reflect-metadata": "^0.1.13",
     "rimraf": "^3.0.2",
-    "typeorm": "0.2.43",
-    "uuidv4": "^6.2.10",
     "ts-node-dev": "^1.0.0-pre.44",
-    "mysql": "^2.14.1"
+    "typeorm": "0.2.43",
+    "uuidv4": "^6.2.10"
   },
   "devDependencies": {
     "@types/cors": "^2.8.10",
     "@types/express": "^4.17.6",
-    "typescript": "4.5.2",
+    "@types/node": "^16.11.10",
     "ts-node": "10.4.0",
-    "@types/node": "^16.11.10"
+    "typescript": "4.5.2"
   }
 }

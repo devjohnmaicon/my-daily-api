@@ -7,9 +7,15 @@ import {
   ManyToOne,
   OneToMany,
   ManyToMany,
+  BeforeInsert,
+  BeforeUpdate,
 } from 'typeorm';
+
 import { v4 as uuid } from 'uuid';
+import * as bcrypt from 'bcrypt';
+
 import { CreateEmployeePropsDTO } from '../useCases/Employee/EmployeeDTO';
+
 import { Daily } from './Daily';
 import { Role } from './Role';
 import { Shop } from './Shop';
@@ -44,6 +50,15 @@ export class Employee {
 
   @OneToMany(() => Daily, (daily) => daily.employee)
   dailies: Daily[];
+
+  @Column()
+  password: string;
+
+  @BeforeInsert()
+  @BeforeUpdate()
+  hashPassword() {
+    this.password = bcrypt.hashSync(this.password, 8);
+  }
 
   @CreateDateColumn()
   created_at: Date;
