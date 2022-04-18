@@ -24,8 +24,6 @@ export class CreateShopUseCase {
       profile_photo,
     });
 
-    const newShop = await this.shopRepository.save(shop);
-
-    return newShop;
+    return await this.shopRepository.save(shop);
   }
 }

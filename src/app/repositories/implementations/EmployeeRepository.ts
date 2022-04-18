@@ -6,19 +6,15 @@ export class EmployeeRepository implements IEmployeeRepository {
   async save(employee: Employee): Promise<Employee> {
     const repo = getRepository(Employee);
 
-    const newEmployee = await repo.save(employee);
-
-    return newEmployee;
+    return repo.save(employee);
   }
 
   getEmployees(): Promise<Employee[]> {
     const repo = getRepository(Employee);
 
-    const employees = repo.find({
+    return repo.find({
       relations: ['shop', 'role', 'dailies'],
       loadRelationIds: { relations: [, 'shop'] },
     });
-
-    return employees;
   }
 }

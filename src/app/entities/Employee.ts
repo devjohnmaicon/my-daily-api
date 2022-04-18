@@ -54,12 +54,6 @@ export class Employee {
   @Column()
   password: string;
 
-  @BeforeInsert()
-  @BeforeUpdate()
-  hashPassword() {
-    this.password = bcrypt.hashSync(this.password, 8);
-  }
-
   @CreateDateColumn()
   created_at: Date;
 

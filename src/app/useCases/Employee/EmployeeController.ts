@@ -20,19 +20,26 @@ export class EmployeeController {
   }
 
   async create(request: Request, response: Response): Promise<Response> {
-    const { name, role, balance, profile_photo, shop }: CreateEmployeePropsDTO =
-      request.body;
+    const {
+      name,
+      password,
+      role,
+      balance,
+      profile_photo,
+      shop,
+    }: CreateEmployeePropsDTO = request.body;
 
     try {
-      const employee = await this.createEmployeeUseCase.execute({
+      await this.createEmployeeUseCase.execute({
         name,
+        password,
         role,
         balance,
         profile_photo,
         shop,
       });
 
-      return response.json(employee);
+      return response.status(200).json({ message: 'Salvo com sucesso' });
     } catch (err) {
       return response.status(400).send({ error: err.message });
     }

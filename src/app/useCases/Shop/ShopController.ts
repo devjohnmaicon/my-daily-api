@@ -13,14 +13,14 @@ export class ShopController {
     const { name, phone, city, profile_photo } = request.body;
 
     try {
-      const candidate = await this.createShopUseCase.execute({
+      await this.createShopUseCase.execute({
         name,
         phone,
         city,
         profile_photo,
       });
 
-      return response.json(candidate);
+      return response.status(200).json({ message: 'Success' });
     } catch (err) {
       return response.status(400).send({ error: err.message });
     }
