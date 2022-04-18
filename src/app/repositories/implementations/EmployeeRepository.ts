@@ -9,12 +9,13 @@ export class EmployeeRepository implements IEmployeeRepository {
     return repo.save(employee);
   }
 
-  getEmployees(): Promise<Employee[]> {
+  getEmployee(email: string): Promise<Employee> {
     const repo = getRepository(Employee);
 
-    return repo.find({
+    return repo.findOne({
+      where: { email },
       relations: ['shop', 'role', 'dailies'],
-      loadRelationIds: { relations: [, 'shop'] },
+      loadRelationIds: { relations: ['shop'] },
     });
   }
 }

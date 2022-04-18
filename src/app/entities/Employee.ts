@@ -6,13 +6,9 @@ import {
   PrimaryColumn,
   ManyToOne,
   OneToMany,
-  ManyToMany,
-  BeforeInsert,
-  BeforeUpdate,
 } from 'typeorm';
 
 import { v4 as uuid } from 'uuid';
-import * as bcrypt from 'bcrypt';
 
 import { CreateEmployeePropsDTO } from '../useCases/Employee/EmployeeDTO';
 
@@ -36,8 +32,10 @@ export class Employee {
   @Column()
   name: string;
 
-  @ManyToOne(() => Role, (role) => role.employees)
-  role: Role;
+  @Column()
+  email: string;
+  @Column()
+  password: string;
 
   @Column()
   balance: string;
@@ -48,11 +46,11 @@ export class Employee {
   @ManyToOne(() => Shop, (shop) => shop.employees)
   shop: Shop;
 
+  @ManyToOne(() => Role, (role) => role.employees)
+  role: Role;
+
   @OneToMany(() => Daily, (daily) => daily.employee)
   dailies: Daily[];
-
-  @Column()
-  password: string;
 
   @CreateDateColumn()
   created_at: Date;

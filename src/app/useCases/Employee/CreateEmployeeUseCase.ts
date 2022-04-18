@@ -7,6 +7,7 @@ export class CreateEmployeeUseCase {
 
   public async execute({
     name,
+    email,
     password,
     role,
     balance,
@@ -15,6 +16,7 @@ export class CreateEmployeeUseCase {
   }: CreateEmployeePropsDTO): Promise<Employee | Error> {
     const employee = new Employee({
       name,
+      email,
       password,
       role,
       balance,

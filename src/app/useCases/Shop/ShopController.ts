@@ -1,5 +1,4 @@
 import { Request, Response } from 'express';
-import { GetEmployeesUseCase } from '../Employee/GetEmployeesUseCase';
 import { CreateShopUseCase } from './CreateShopUseCase';
 import { GetShopUseCase } from './GetShopUseCase';
 
