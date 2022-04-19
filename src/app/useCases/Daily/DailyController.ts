@@ -1,13 +1,15 @@
 import { Request, Response } from 'express';
 import { CreateDailyUseCase } from './CreateDailyUseCase';
 import { DeleteDailyUseCase } from './DeleteDailyUseCase';
+import { GetDailyUseCase } from './GetDailyUseCase';
 import { UpdateDailyUseCase } from './UpdateDailyUseCase';
 
 export class DailyController {
   constructor(
     private createDailyUseCase: CreateDailyUseCase,
     private updateDailyUseCase: UpdateDailyUseCase,
-    private deleteDailyUseCase: DeleteDailyUseCase
+    private deleteDailyUseCase: DeleteDailyUseCase,
+    private getDailyUseCase: GetDailyUseCase
   ) {}
 
   async create(request: Request, response: Response): Promise<Response> {
@@ -21,6 +23,18 @@ export class DailyController {
         description,
         employee,
       });
+
+      return response.json(_daily);
+    } catch (err) {
+      return response.status(400).send({ error: err.message });
+    }
+  }
+
+  async findOne(request: Request, response: Response): Promise<Response> {
+    const { id } = request.body;
+
+    try {
+      const _daily = await this.getDailyUseCase.execute(id);
 
       return response.json(_daily);
     } catch (err) {
@@ -52,7 +66,7 @@ export class DailyController {
     try {
       await this.deleteDailyUseCase.execute(id);
 
-      return response.json({ message: 'Daily deletada' });
+      return response.json({ daily_id: id, message: 'Daily  deletada' });
     } catch (err) {
       return response.status(400).send({ error: err.message });
     }

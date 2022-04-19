@@ -36,6 +36,10 @@ routes.delete('/daily', (req, res) => {
   return dailyController.delete(req, res);
 });
 
+routes.post('/daily', (req, res) => {
+  return dailyController.findOne(req, res);
+});
+
 routes.post('/roleCreate', (req, res) => {
   return roleController.create(req, res);
 });

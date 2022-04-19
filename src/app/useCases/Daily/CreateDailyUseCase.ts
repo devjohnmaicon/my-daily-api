@@ -20,7 +20,7 @@ export class CreateDailyUseCase {
       employee,
     });
 
-    const newDaily = await this.dailyRepository.update(daily);
+    const newDaily = await this.dailyRepository.save(daily);
 
     return newDaily;
   }
