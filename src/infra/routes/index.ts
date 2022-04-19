@@ -27,8 +27,13 @@ routes.post('/employee', (req, res) => {
 routes.post('/dailyCreate', (req, res) => {
   return dailyController.create(req, res);
 });
+
 routes.put('/daily', (req, res) => {
   return dailyController.update(req, res);
+});
+
+routes.delete('/daily', (req, res) => {
+  return dailyController.delete(req, res);
 });
 
 routes.post('/roleCreate', (req, res) => {

@@ -1,11 +1,13 @@
 import { Request, Response } from 'express';
 import { CreateDailyUseCase } from './CreateDailyUseCase';
+import { DeleteDailyUseCase } from './DeleteDailyUseCase';
 import { UpdateDailyUseCase } from './UpdateDailyUseCase';
 
 export class DailyController {
   constructor(
     private createDailyUseCase: CreateDailyUseCase,
-    private updateDailyUseCase: UpdateDailyUseCase
+    private updateDailyUseCase: UpdateDailyUseCase,
+    private deleteDailyUseCase: DeleteDailyUseCase
   ) {}
 
   async create(request: Request, response: Response): Promise<Response> {
@@ -27,7 +29,7 @@ export class DailyController {
   }
 
   async update(request: Request, response: Response): Promise<Response> {
-    const { id, type, value, date, description, employee } = request.body;
+    const { id, type, value, date, description } = request.body;
 
     try {
       const _daily = await this.updateDailyUseCase.execute({
@@ -39,6 +41,18 @@ export class DailyController {
       });
 
       return response.json(_daily);
+    } catch (err) {
+      return response.status(400).send({ error: err.message });
+    }
+  }
+
+  async delete(request: Request, response: Response): Promise<Response> {
+    const { id } = request.body;
+
+    try {
+      await this.deleteDailyUseCase.execute(id);
+
+      return response.json({ message: 'Daily deletada' });
     } catch (err) {
       return response.status(400).send({ error: err.message });
     }

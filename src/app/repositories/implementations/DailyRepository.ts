@@ -6,16 +6,18 @@ export class DailyRepository implements IDailyRepository {
   async save(daily: Daily): Promise<Daily> {
     const repo = getRepository(Daily);
 
-    const newDaily = await repo.save(daily);
-
-    return newDaily;
+    return await repo.save(daily);
   }
 
   async update(daily: Daily): Promise<any> {
     const repo = getRepository(Daily);
 
-    const updateDaily = await repo.update({ id: daily.id }, daily);
+    return await repo.update({ id: daily.id }, daily);
+  }
 
-    return updateDaily;
+  async delete(id: string): Promise<void> {
+    const repo = getRepository(Daily);
+
+    await repo.delete(id);
   }
 }
