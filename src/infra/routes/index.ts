@@ -1,47 +1,16 @@
 import { Router } from 'express';
-import { dailyController } from '../../app/useCases/Daily';
-import { employeeController } from '../../app/useCases/Employee';
-import { roleController } from '../../app/useCases/Role';
-import { shopController } from '../../app/useCases/Shop';
+import routesDaily from './daily.routes';
+import routesEmployee from './employee.routes';
+import routesPhoto from './photo.routes';
+import routesShop from './shop.routes';
 
 const routes = Router();
 
-// routes.post('/photo', PhotoController.create);
+routes.use(routesDaily);
+routes.use(routesEmployee);
+routes.use(routesShop);
+routes.use(routesShop);
 
-routes.post('/shopCreate', (req, res) => {
-  return shopController.create(req, res);
-});
-
-routes.get('/shop', (req, res) => {
-  return shopController.getShop(req, res);
-});
-
-routes.post('/employeeCreate', (req, res) => {
-  return employeeController.create(req, res);
-});
-
-routes.post('/employee', (req, res) => {
-  return employeeController.getByEmail(req, res);
-});
-
-routes.post('/dailyCreate', (req, res) => {
-  return dailyController.create(req, res);
-});
-
-routes.put('/daily', (req, res) => {
-  return dailyController.update(req, res);
-});
-
-routes.delete('/daily', (req, res) => {
-  return dailyController.delete(req, res);
-});
-
-routes.post('/daily', (req, res) => {
-  return dailyController.findOne(req, res);
-});
-
-routes.post('/roleCreate', (req, res) => {
-  return roleController.create(req, res);
-});
+// routes.use(routesPhoto);
 
 export default routes;
