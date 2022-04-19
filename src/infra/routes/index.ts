@@ -1,13 +1,12 @@
 import { Router } from 'express';
 import { dailyController } from '../../app/useCases/Daily';
 import { employeeController } from '../../app/useCases/Employee';
-import PhotoController from '../../app/useCases/Photo/PhotoController';
 import { roleController } from '../../app/useCases/Role';
 import { shopController } from '../../app/useCases/Shop';
 
 const routes = Router();
 
-routes.post('/photo', PhotoController.create);
+// routes.post('/photo', PhotoController.create);
 
 routes.post('/shopCreate', (req, res) => {
   return shopController.create(req, res);
@@ -27,6 +26,9 @@ routes.post('/employee', (req, res) => {
 
 routes.post('/dailyCreate', (req, res) => {
   return dailyController.create(req, res);
+});
+routes.put('/daily', (req, res) => {
+  return dailyController.update(req, res);
 });
 
 routes.post('/roleCreate', (req, res) => {

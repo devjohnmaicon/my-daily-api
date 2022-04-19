@@ -1,26 +1,26 @@
 import { Daily } from '../../entities/Daily';
 import { IDailyRepository } from '../../repositories/IDailyRepository';
-import { CreateDailyDTO } from './DailyDTO';
+import { UpdateDailyDTO } from './DailyDTO';
 
-export class CreateDailyUseCase {
+export class UpdateDailyUseCase {
   constructor(private dailyRepository: IDailyRepository) {}
 
   public async execute({
+    id,
     type,
     value,
     date,
     description,
-    employee,
-  }: CreateDailyDTO): Promise<Daily | Error> {
+  }: UpdateDailyDTO): Promise<Daily | Error> {
     const daily = new Daily({
+      id,
       type,
       value,
       date,
       description,
-      employee,
     });
 
-    const newDaily = await this.dailyRepository.update(daily);
+    const newDaily = await this.dailyRepository.save(daily);
 
     return newDaily;
   }

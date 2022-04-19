@@ -12,7 +12,7 @@ module.exports = {
   username: process.env.TYPEORM_USERNAME,
   password: process.env.TYPEORM_PASSWORD,
   database: process.env.TYPEORM_DATABASE,
-  synchronize: process.env.TYPEORM_SYNCHRONIZE,
+  synchronize: false,
   logging: false,
   entities: [`src/app/entities/*.ts`, `build/app/entities/*.js`],
   migrations: [`${rootDir}/infra/database/migrations/*.${extensionFile}`],

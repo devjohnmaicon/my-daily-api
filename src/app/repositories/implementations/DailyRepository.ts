@@ -10,4 +10,12 @@ export class DailyRepository implements IDailyRepository {
 
     return newDaily;
   }
+
+  async update(daily: Daily): Promise<any> {
+    const repo = getRepository(Daily);
+
+    const updateDaily = await repo.update({ id: daily.id }, daily);
+
+    return updateDaily;
+  }
 }
