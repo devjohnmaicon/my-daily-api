@@ -11,6 +11,6 @@ routes.use(routesEmployee);
 routes.use(routesShop);
 routes.use(routesShop);
 
-// routes.use(routesPhoto);
+routes.use(routesPhoto);
 
 export default routes;

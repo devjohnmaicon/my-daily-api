@@ -1,8 +1,8 @@
 import { Router } from 'express';
-import { roleController } from '../../app/useCases/Role';
+import PhotoController from '../../app/useCases/Photo/PhotoController';
 
 const routesPhoto = Router();
 
-routesPhoto.post('/photo', (req, res) => roleController.create(req, res));
+routesPhoto.post('/photo', (req, res) => PhotoController.create(req, res));
 
 export default routesPhoto;
